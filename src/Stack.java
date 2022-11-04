@@ -1,20 +1,26 @@
 public class Stack<N> {
-    private int size = 0;
+    private int size = 1;
     private StackNode top;
-    private StackNode next;
     private N data;
 
     public void push(N data){
         StackNode temp = new StackNode(data);
-        if(top != null){
-            top = top.setNext(temp);
+        while(top != null){
+            temp = top.getNext();
         }
         top = temp;
+        top.setData(data);
+        size ++;
     }
 
     public N pop(){
-        N data = top.getData();
+        N data = (N) top.getData();
         top.setData(null);
+        return data;
+    }
+
+    public N peek() {
+        return (N) top.getData();
     }
 
     public boolean isEmpty() {
@@ -23,10 +29,6 @@ public class Stack<N> {
 
     public int size() {
         return size;
-    }
-
-    public N peek() {
-        return top.getData();
     }
 
 }
