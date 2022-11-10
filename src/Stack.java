@@ -1,15 +1,13 @@
 public class Stack<N> {
-    private int size = 1;
+    private int size = 1; // creating instance data
     private StackNode top;
     private N data;
 
+    public Stack(){
+    }
+
     public void push(N data){
-        StackNode temp = new StackNode(data);
-        while(top != null){
-            temp = top.getNext();
-        }
-        top = temp;
-        top.setData(data);
+        top = new StackNode <N> (top, data);
         size ++;
     }
 
